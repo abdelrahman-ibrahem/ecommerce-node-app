@@ -1,0 +1,14 @@
+extends base
+
+
+block content 
+  section.products
+    .row
+      each book in books
+        .col-sm-3
+          .card(style="width: 18rem;")
+            img.card-img-top(src=`/img/books/${book.image}`, alt=``)
+            .card-body
+              h5.card-title= book.name
+              p.card-text= `price: ${book.price} $`
+              a.btn.btn-primary(href=`/book-detail/${book.slug}`) more details

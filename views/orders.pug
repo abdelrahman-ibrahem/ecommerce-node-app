@@ -1,0 +1,28 @@
+extends base
+
+block content 
+  section.cart
+    table.table
+      thead
+        tr
+          th(scope="col") #
+          th(scope="col") image
+          th(scope="col") price
+          th(scope="col") quantity
+          th(scope="col") total price
+          th(scope="col") email
+          th(scope="col") address
+
+      tbody
+        each order , i in orders
+          tr
+            th(scope="row")= `${i+1}`
+            td
+              img(style="width: 5em; height:5em; border-radius: 20%;", src=`/img/books/${order.book.image}`)
+            td= `${order.book.price} $`
+            td= order.quantity
+            td= `${order.quantity * order.book.price} $`
+            td= order.user.email
+            td= order.user.address
+            td
+              a.btn.btn-danger(href=`/orders/delete/${order._id}`)  delete 

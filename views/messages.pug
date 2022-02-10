@@ -1,0 +1,22 @@
+extends base
+block content 
+  section.cart
+    -if (messages.length > 0)
+      table.table
+        thead
+          tr
+            th(scope="col") #
+            th(scope="col") name
+            th(scope="col") email
+            th(scope="col") message
+        tbody
+          each  message , i in messages 
+            tr
+              th(scope="row")= `${i+1}`
+              td= message.name
+              td= message.email
+              td= message.message 
+              td
+                a.btn.btn-danger(href=`/messages/${message._id}`)  delete 
+    -else 
+      h3(style="margin: 10px;") no messages

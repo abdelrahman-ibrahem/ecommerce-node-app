@@ -1,0 +1,29 @@
+extends base
+
+
+
+block content 
+  section.products
+    .row
+      .col-sm-6
+        img.card-img-top(src=`/img/books/${book.image}`, style="border-radius: 10%;width: 23em;height:23em;" , alt=`${book.name}`)
+      .col-sm-3
+        .form-group
+          labe= `name: ${book.name}`
+          | | 
+          if (book.avalibale)
+            label avalibale
+          else 
+            label not avalibale
+        .form-group
+          label=`Auther: ${book.auther}`
+        .form-group
+          label=`price: ${book.price} $`
+        .form-group
+          label descrption
+          p= book.descrption
+        form.add_to_cart(action=`/add-to-cart/${book._id}` , method="POST")
+          .form-group
+            label  quantity
+            input#quantity(class="form-control" , style="width: 10em;",placeholder="quantity" ,  type="number" , name="quantity")
+          button.btn.btn-primary(type="submit")  add to cart

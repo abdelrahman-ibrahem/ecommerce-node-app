@@ -1,0 +1,24 @@
+extends base
+
+//- (action="/add" , method="POST" ,enctype="multipart/form-data")
+block content 
+  section.products
+    div
+      form.add(action="/add" , method="POST" ,enctype="multipart/form-data")
+        .form-group
+          label(for="name") name
+          input#name.form-control(type="text" , name="name", placeholder="Enter Name")
+        .form-group
+          label(for="descrption") description
+          input#descrption.form-control(type="text", name="descrption",  placeholder="descrption")
+        .form-group
+          label(for="price") price
+          input#price.form-control(type="number" , name="price")
+        .form-group
+          label(for="Auther") Auther
+          input#auther.form-control(type="text",name="auther" ,placeholder="Auther")
+        .form-group
+          label(for="image") image
+          input.form-control(type="file" ,id="image" , accept="image/*" , name="image")
+        button.btn.btn-primary(type="submit") add new book
+  

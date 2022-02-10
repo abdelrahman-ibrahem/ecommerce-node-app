@@ -1,0 +1,21 @@
+extends base
+
+block content 
+  section
+    form.register(action="/register" , method="POST")
+      .form-group
+        label(for="username") username
+        input#username.form-control(type="text", aria-describedby="emailHelp",name="username" ,  placeholder="Enter the username")
+      .form-group
+        label(for="email") Email address
+        input#email.form-control(type="email", aria-describedby="emailHelp", name="email" , placeholder="Enter email")
+      .form-group
+        label(for="address") Enter address 
+        input#address.form-control(type="text", aria-describedby="emailHelp", name="address" , placeholder="Enter address")
+      .form-group
+        label(for="password") Password
+        input#password.form-control(type="password",name="password" , placeholder="Password")
+      .form-group
+        label(for="passwordConfirm") Password confirm
+        input#passwordConfirm.form-control(type="password",name="passwordConfirm" ,  placeholder="Password confirm")
+      button.btn.btn-primary Submit

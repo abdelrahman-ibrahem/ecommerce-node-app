@@ -1,0 +1,50 @@
+extends base
+block content 
+  section.cart
+    h3(style="inline") Your total price is 
+    input(type="number",id="total"  , class="form-control"  ,style="width: 10em;", value=`${total}` disabled)
+    table.table
+      thead
+        tr
+          th(scope="col") #
+          th(scope="col") name
+          th(scope="col") image
+          th(scope="col") price
+          th(scope="col") quantity
+      tbody
+        each order , i in orders
+          tr
+            th(scope="row")= `${i+1}`
+            td= order.book.name
+            td
+              img(style="width: 5em; height:5em; border-radius: 20%;", src=`/img/books/${order.book.image}`)
+            td= `${order.book.price} $`
+            td
+              form(action=`/my-cart/update/${order._id}` , method='post')
+                input(type="number" , name="quantity" , value=`${order.quantity}`)
+                button.btn.btn-primary( style="margin:5px;" type="submit") update quantity
+            td
+              a.btn.btn-danger(href=`/my-cart/delete/${order._id}`)  delete  
+  .container 
+    #paypal-button-container
+  
+  script.
+    paypal.Buttons({
+    createOrder: function(data, actions) {
+    return actions.order.create({
+    purchase_units: [{
+    amount: {
+    value: document.getElementById('total').value // Can reference variables or functions. Example: `value: document.getElementById('...').value`
+    }
+    }]
+    });
+    },
+    onApprove: function(data, actions) {
+    return actions.order.capture().then(function(orderData) {
+    //console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
+    //var transaction = orderData.purchase_units[0].payments.captures[0];
+    alert('thasks for payments with paypal');
+    });
+    }
+    }).render('#paypal-button-container');
+

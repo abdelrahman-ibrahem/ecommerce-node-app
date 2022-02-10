@@ -1,0 +1,35 @@
+extends base
+
+block content 
+            form.profile(action=`/profile/update/${user._id}`, method="POST" ,enctype="multipart/form-data")
+                .col-md-5.border-right
+                    .p-3.py-5
+                        img(src=`/img/users/${user.photo}`, style="width: 8em; height:8em; border-radius: 50%;", alt="user")
+                        .container 
+                            label(for="photo", style="margin:8px;") update profile image 
+                            input(type="file", accept="image/*" , style="margin:8px;" , name="photo" , id="photo" ) 
+                        .d-flex.justify-content-between.align-items-center.mb-3
+                            h4.text-right Profile Settings
+                        .row.mt-2
+                            .col-md-6
+                                label.labels username
+                                input.form-control(type="text" , name="username",  id="username", placeholder="username" , value=`${user.username}` )
+                            .col-md-6
+                                label.labels email
+                                input.form-control(type="email" , name="email" , id="email" , placeholder="email" ,  value=`${user.email}`)
+                            button.btn.btn-primary.profile-button(style="margin-left:10px;margin-top: 10px;" ) Save Profile
+                            
+            form.password(action=`/profile/update-pasword/${user._id}` , method="POST")
+                .col-md-5.border-right
+                    .p-3.py-5
+                        .row.mt-3
+                            .col-md-12
+                                label.labels current password
+                                input.form-control(type="password", name="currentPassword" , id="currentPassword" ,placeholder="enter current password")
+                            .col-md-12
+                                label.labels new password
+                                input.form-control(type="password",  name="password" ,id="password" , placeholder="enter the new password")
+                            .col-md-12
+                                label.labels confirm new password
+                                input.form-control(type="password", name="passwordConfirm" , id="passwordConfirm" , placeholder="enter confirm the new password")
+                            button.btn.btn-primary.profile-button(style="margin-left:10px;margin-top: 10px;" , type="submit" ) Save password
