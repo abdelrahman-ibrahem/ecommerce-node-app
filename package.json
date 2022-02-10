@@ -4,7 +4,8 @@
   "description": "book store by using Node js, Express and mongoDB",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "node index.js",
+    "dev": "nodemon index.js"
   },
   "keywords": [],
   "author": "Abdelrahman ibrahem",
