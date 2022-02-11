@@ -37,8 +37,7 @@ if (process.env.NODE_ENV==='development')
     app.use(morgan('dev'));
 
 // handel db connection
-//'mongodb://localhost/node-book-store'
-mongoose.connect(`${process.env.DATABASE}` , { useNewUrlParser: true, useUnifiedTopology: true  }).then(()=>{
+mongoose.connect('mongodb+srv://abdelrahman:test1234@bookstore.oai8j.mongodb.net/bookStore?retryWrites=true&w=majority' , { useNewUrlParser: true, useUnifiedTopology: true  }).then(()=>{
     //console.log('DB is conncted');
 }).catch(err=>{
    // console.log(`Error: ${err.message}`);
