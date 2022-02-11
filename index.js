@@ -39,9 +39,9 @@ if (process.env.NODE_ENV==='development')
 // handel db connection
 //'mongodb://localhost/node-book-store'
 mongoose.connect(`${process.env.DATABASE}` , { useNewUrlParser: true, useUnifiedTopology: true  }).then(()=>{
-    console.log('DB is conncted');
+    //console.log('DB is conncted');
 }).catch(err=>{
-    console.log(`Error: ${err.message}`);
+   // console.log(`Error: ${err.message}`);
 });
 
 // handel routes / api and views 
@@ -55,5 +55,6 @@ app.use('/api/v1/contacts' , contactRouter);
 // handel running server on port 3000 
 
 app.listen(3000, ()=>{
-    console.log('server is Running');
+    if (process.env.NODE_ENV === 'development')
+        console.log('server is Running');
 });

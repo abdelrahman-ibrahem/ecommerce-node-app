@@ -298,10 +298,10 @@ router.post('/register' , async (req , res)=>{
         isAdmin: req.body.isAdmin,
         address: req.body.address
     }).then(newUser=>{
-        console.log(newUser);
+        //console.log(newUser);
         res.status(200).redirect('/login');
     }).catch(err=>{
-        console.log(err.message);
+        //console.log(err.message);
         res.status(400).redirect('/register');
     });
 });
