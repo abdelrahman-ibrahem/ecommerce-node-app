@@ -229,8 +229,8 @@ router.post('/add', protect_view , upload_book_image , async (req , res)=>{
 
 // for add to cart function 
 router.post('/add-to-cart/:bookId' ,  protect_view, async (req , res)=>{
+    const book = await Book.findById(req.params.bookId);
     if (req.user){
-        const book = await Book.findById(req.params.bookId);
         await Cart.create({
             user: req.user._id,
             book: req.params.bookId,
