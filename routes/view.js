@@ -229,18 +229,22 @@ router.post('/add', protect_view , upload_book_image , async (req , res)=>{
 
 // for add to cart function 
 router.post('/add-to-cart/:bookId' ,  protect_view, async (req , res)=>{
-    const book = await Book.findById(req.params.bookId);
-    await Cart.create({
-        user: req.user._id,
-        book: req.params.bookId,
-        quantity: req.body.quantity
-    }).then(result=>{
-        //console.log(result);
-        res.status(200).redirect(`/my-cart`);
-    }).catch(err=>{
-        //console.log(err.message);
+    if (req.user){
+        const book = await Book.findById(req.params.bookId);
+        await Cart.create({
+            user: req.user._id,
+            book: req.params.bookId,
+            quantity: req.body.quantity
+        }).then(result=>{
+            //console.log(result);
+            res.status(200).redirect(`/my-cart`);
+        }).catch(err=>{
+            //console.log(err.message);
+            res.status(400).redirect(`/book-detail/${book.slug}`);
+        });
+    }else{
         res.status(400).redirect(`/book-detail/${book.slug}`);
-    });
+    }
 });
 
 // for display login page
