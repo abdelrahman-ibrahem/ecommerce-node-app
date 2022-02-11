@@ -52,8 +52,8 @@ app.use('/api/v1/books' , bookRouter);
 app.use('/api/v1/orders' , CartRouter)
 app.use('/api/v1/contacts' , contactRouter);
 // handel running server on port 3000 
-
-app.listen(3000, ()=>{
+const port = process.env.PORT || 3000;
+app.listen(port, ()=>{
     if (process.env.NODE_ENV === 'development')
         console.log('server is Running');
 });
