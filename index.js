@@ -38,7 +38,7 @@ if (process.env.NODE_ENV==='development')
 
 // handel db connection
 //'mongodb://localhost/node-book-store'
-mongoose.connect(process.env.DATABASE , { useNewUrlParser: true, useUnifiedTopology: true  }).then(()=>{
+mongoose.connect(`${process.env.DATABASE}` , { useNewUrlParser: true, useUnifiedTopology: true  }).then(()=>{
     console.log('DB is conncted');
 }).catch(err=>{
     console.log(`Error: ${err.message}`);

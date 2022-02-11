@@ -8,6 +8,7 @@ block content
           th(scope="col") #
           th(scope="col") image
           th(scope="col") username
+          th(scope="col") admin
           th(scope="col") email
       tbody
         each user , i in users
@@ -16,4 +17,8 @@ block content
             td
               img(style="width: 5em; height:5em; border-radius: 20%;", src=`/img/users/${user.photo}`)
             td= user.username
+            if user.isAdmin
+              td Admin
+            else 
+              td User
             td= user.email
